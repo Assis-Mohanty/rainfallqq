@@ -1,0 +1,19 @@
+columns:
+  - Crop: object
+  - Crop_Year: int64
+  - Season: object
+  - State: object
+  - Area: float64
+  - Production: float64
+  - Annual_Rainfall: float64
+  - Fertilizer: float64
+  - Pesticide: float64
+  - Yield: float64
+
+numerical_columns:
+  - Crop_Year
+  - Area
+  - Production
+  - Annual_Rainfall
+  - Fertilizer
+  - Pesticide

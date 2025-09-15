@@ -1,0 +1,6 @@
+[2025-09-15 09:50:34,142] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-09-15 09:50:34,145] 107 dagshub - INFO - Accessing as Assis-Mohanty
+[2025-09-15 09:50:35,203] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Assis-Mohanty/crossOrgin "HTTP/1.1 200 OK"
+[2025-09-15 09:50:35,827] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-09-15 09:50:35,829] 107 dagshub - INFO - Initialized MLflow to track repo "Assis-Mohanty/crossOrgin"
+[2025-09-15 09:50:35,829] 107 dagshub - INFO - Repository Assis-Mohanty/crossOrgin initialized!

@@ -1,0 +1,12 @@
+{
+  "Network Exception Handling": {
+    "prefix": "te",
+    "body": [
+      "try:",
+      "    $1",
+      "except Exception as e:",
+      "    raise NetworkSecurityException(e, sys)"
+    ],
+    "description": "Wrap code with NetworkSecurityException handler"
+  }
+}

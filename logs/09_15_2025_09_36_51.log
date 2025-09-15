@@ -1,0 +1,37 @@
+[2025-09-15 09:36:54,683] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-09-15 09:36:54,688] 107 dagshub - INFO - Accessing as Assis-Mohanty
+[2025-09-15 09:36:55,385] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Assis-Mohanty/crossOrgin "HTTP/1.1 200 OK"
+[2025-09-15 09:36:55,997] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-09-15 09:36:55,998] 107 dagshub - INFO - Initialized MLflow to track repo "Assis-Mohanty/crossOrgin"
+[2025-09-15 09:36:55,998] 107 dagshub - INFO - Repository Assis-Mohanty/crossOrgin initialized!
+[2025-09-15 09:37:15,703] 42 root - INFO - Started data ingestion
+[2025-09-15 09:38:00,450] 41 root - INFO - Read dataframe with shape: (34844, 11)
+[2025-09-15 09:38:00,938] 67 root - INFO - Train test split performed on the dataframe
+[2025-09-15 09:38:00,938] 68 root - INFO - exited the split_data_as_train_test method of DataIngestion class 
+[2025-09-15 09:38:00,939] 71 root - INFO - Exporting train and test file path
+[2025-09-15 09:38:01,372] 78 root - INFO - Exported traing and test file path
+[2025-09-15 09:38:01,389] 45 root - INFO - Data Ingestion completed and artifact:DataIngestionArtifact(trained_file_path='Artifacts\\09_15_2025_09_36_52\\data_ingestion\\ingested\\train.csv', test_file_path='Artifacts\\09_15_2025_09_36_52\\data_ingestion\\ingested\\test.csv')
+[2025-09-15 09:38:01,390] 53 root - INFO - Started data validation
+[2025-09-15 09:38:01,462] 31 root - INFO - Required number of columns:2
+[2025-09-15 09:38:01,462] 32 root - INFO - Data frame has columns:10
+[2025-09-15 09:38:01,462] 49 root - INFO - All expected numerical columns are present.
+[2025-09-15 09:38:01,711] 56 root - INFO - Data Validation completed and artifact:DataValidationArtifact(validation_status=None, valid_train_file_path='Artifacts\\09_15_2025_09_36_52\\data_validation\\validated\\train.csv', valid_test_file_path='Artifacts\\09_15_2025_09_36_52\\data_validation\\validated\\test.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='Artifacts\\09_15_2025_09_36_52\\data_validation\\drift_report\\report.yaml')
+[2025-09-15 09:38:01,711] 66 root - INFO - Started data validation
+[2025-09-15 09:38:01,711] 74 root - INFO - Entered the initiate_data_transformation of the DataTransformation class
+[2025-09-15 09:38:01,711] 76 root - INFO - Starting the data transformation
+[2025-09-15 09:38:01,744] 43 root - INFO - Entered get_transformation_object method of Transformation class
+[2025-09-15 09:38:01,760] 42 root - INFO - Entered the save_object method of the main_utils class
+[2025-09-15 09:38:01,762] 46 root - INFO - Exited the save_object method of the main_utils class
+[2025-09-15 09:38:01,765] 42 root - INFO - Entered the save_object method of the main_utils class
+[2025-09-15 09:38:01,767] 46 root - INFO - Exited the save_object method of the main_utils class
+[2025-09-15 09:38:01,768] 69 root - INFO - Data transofrmation completed and  artifact:DataTransformationArtifact(transformed_object_file_path='Artifacts\\09_15_2025_09_36_52\\data_transformation\\transformed_object\\preprocessing.pkl', transformed_train_file_path='Artifacts\\09_15_2025_09_36_52\\data_transformation\\transformed\\train.npy', transformed_test_file_path='Artifacts\\09_15_2025_09_36_52\\data_transformation\\transformed\\train.npy')
+[2025-09-15 09:38:01,769] 95 root - INFO - Training model: Random Forest
+[2025-09-15 09:38:20,186] 95 root - INFO - Training model: Decision Tree
+[2025-09-15 09:38:20,425] 95 root - INFO - Training model: Gradient Boosting
+[2025-09-15 09:39:35,561] 95 root - INFO - Training model: Linear Regression
+[2025-09-15 09:39:35,622] 95 root - INFO - Training model: AdaBoost
+[2025-09-15 09:40:04,727] 42 root - INFO - Entered the save_object method of the main_utils class
+[2025-09-15 09:40:04,728] 46 root - INFO - Exited the save_object method of the main_utils class
+[2025-09-15 09:40:04,728] 42 root - INFO - Entered the save_object method of the main_utils class
+[2025-09-15 09:40:04,730] 46 root - INFO - Exited the save_object method of the main_utils class
+[2025-09-15 09:40:04,730] 127 root - INFO - Model trainer artifact :ModelTrainerArtifact(trained_model_file_path='Artifacts\\09_15_2025_09_36_52\\model_trainer\\training_model', train_metric_artifact={'r2': 0.9999999999902428, 'mae': 4.860812168173436e-05, 'mse': 7.817320454871579e-06}, test_metric_artifact={'r2': 0.9999999999902428, 'mae': 4.860812168173436e-05, 'mse': 7.817320454871579e-06})

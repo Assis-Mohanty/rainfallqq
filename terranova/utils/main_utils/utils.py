@@ -61,7 +61,7 @@ def load_object(file_path:str)->object:
 def load_numpy_array_data(file_path:str)->np.array:
     try:
         with open(file_path,"rb") as file_obj:
-            return np.load(file_obj)
+            return np.load(file_obj, allow_pickle=True)
     except Exception as e:
         raise NetworkSecurityException(e, sys)
 

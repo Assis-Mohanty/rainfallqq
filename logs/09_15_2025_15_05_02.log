@@ -1,0 +1,30 @@
+[2025-09-15 15:05:05,317] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-09-15 15:05:05,325] 107 dagshub - INFO - Accessing as Assis-Mohanty
+[2025-09-15 15:05:06,391] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Assis-Mohanty/rainfallqq "HTTP/1.1 200 OK"
+[2025-09-15 15:05:07,400] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-09-15 15:05:07,402] 107 dagshub - INFO - Initialized MLflow to track repo "Assis-Mohanty/rainfallqq"
+[2025-09-15 15:05:07,403] 107 dagshub - INFO - Repository Assis-Mohanty/rainfallqq initialized!
+[2025-09-15 15:05:07,542] 18 root - INFO - Initate the data ingestion
+[2025-09-15 15:05:20,412] 40 root - INFO - Read dataframe with shape: (5000, 7)
+[2025-09-15 15:05:20,416] 51 root - INFO - Filtered DataFrame columns: ['Temperature', 'Humidity', 'Wind_Speed', 'Cloud_Cover', 'Pressure', 'Rain'], shape: (5000, 6)
+[2025-09-15 15:05:20,450] 70 root - INFO - Train test split performed on the dataframe
+[2025-09-15 15:05:20,450] 71 root - INFO - exited the split_data_as_train_test method of DataIngestion class 
+[2025-09-15 15:05:20,450] 74 root - INFO - Exporting train and test file path
+[2025-09-15 15:05:20,474] 81 root - INFO - Exported traing and test file path
+[2025-09-15 15:05:20,475] 20 root - INFO - Data ingestion completed
+[2025-09-15 15:05:20,476] 24 root - INFO - Initated the data validation
+[2025-09-15 15:05:20,486] 31 root - INFO - Required number of columns:4
+[2025-09-15 15:05:20,486] 32 root - INFO - Data frame has columns:6
+[2025-09-15 15:05:20,486] 49 root - INFO - All expected numerical columns are present.
+[2025-09-15 15:05:20,531] 26 root - INFO - Data validation completed
+[2025-09-15 15:05:20,531] 30 root - INFO - Initate the data transformation
+[2025-09-15 15:05:20,531] 74 root - INFO - Entered the initiate_data_transformation of the DataTransformation class
+[2025-09-15 15:05:20,531] 76 root - INFO - Starting the data transformation
+[2025-09-15 15:05:20,541] 43 root - INFO - Entered get_transformation_object method of Transformation class
+[2025-09-15 15:05:20,552] 42 root - INFO - Entered the save_object method of the main_utils class
+[2025-09-15 15:05:20,556] 46 root - INFO - Exited the save_object method of the main_utils class
+[2025-09-15 15:05:20,559] 42 root - INFO - Entered the save_object method of the main_utils class
+[2025-09-15 15:05:20,559] 46 root - INFO - Exited the save_object method of the main_utils class
+[2025-09-15 15:05:20,560] 32 root - INFO - Data transformation completed
+[2025-09-15 15:05:20,560] 35 root - INFO - Model Training started
+[2025-09-15 15:05:20,562] 95 root - INFO - Training model: Random Forest

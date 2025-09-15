@@ -1,0 +1,40 @@
+[2025-09-15 15:33:38,035] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-09-15 15:33:38,041] 107 dagshub - INFO - Accessing as Assis-Mohanty
+[2025-09-15 15:33:39,107] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Assis-Mohanty/rainfallqq "HTTP/1.1 200 OK"
+[2025-09-15 15:33:39,927] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-09-15 15:33:39,932] 107 dagshub - INFO - Initialized MLflow to track repo "Assis-Mohanty/rainfallqq"
+[2025-09-15 15:33:39,932] 107 dagshub - INFO - Repository Assis-Mohanty/rainfallqq initialized!
+[2025-09-15 15:33:40,124] 18 root - INFO - Initate the data ingestion
+[2025-09-15 15:33:41,248] 40 root - INFO - Read dataframe with shape: (5000, 7)
+[2025-09-15 15:33:41,252] 54 root - INFO - Filtered DataFrame columns: ['Temperature', 'Humidity', 'Wind_Speed', 'Cloud_Cover', 'Pressure', 'Rain'], shape: (5000, 6)
+[2025-09-15 15:33:41,275] 73 root - INFO - Train test split performed on the dataframe
+[2025-09-15 15:33:41,275] 74 root - INFO - exited the split_data_as_train_test method of DataIngestion class 
+[2025-09-15 15:33:41,275] 77 root - INFO - Exporting train and test file path
+[2025-09-15 15:33:41,304] 84 root - INFO - Exported traing and test file path
+[2025-09-15 15:33:41,304] 20 root - INFO - Data ingestion completed
+[2025-09-15 15:33:41,306] 24 root - INFO - Initated the data validation
+[2025-09-15 15:33:41,313] 31 root - INFO - Required number of columns:4
+[2025-09-15 15:33:41,314] 32 root - INFO - Data frame has columns:6
+[2025-09-15 15:33:41,314] 49 root - INFO - All expected numerical columns are present.
+[2025-09-15 15:33:41,358] 26 root - INFO - Data validation completed
+[2025-09-15 15:33:41,358] 30 root - INFO - Initate the data transformation
+[2025-09-15 15:33:41,358] 74 root - INFO - Entered the initiate_data_transformation of the DataTransformation class
+[2025-09-15 15:33:41,358] 76 root - INFO - Starting the data transformation
+[2025-09-15 15:33:41,366] 43 root - INFO - Entered get_transformation_object method of Transformation class
+[2025-09-15 15:33:41,375] 42 root - INFO - Entered the save_object method of the main_utils class
+[2025-09-15 15:33:41,386] 46 root - INFO - Exited the save_object method of the main_utils class
+[2025-09-15 15:33:41,389] 42 root - INFO - Entered the save_object method of the main_utils class
+[2025-09-15 15:33:41,390] 46 root - INFO - Exited the save_object method of the main_utils class
+[2025-09-15 15:33:41,390] 32 root - INFO - Data transformation completed
+[2025-09-15 15:33:41,391] 35 root - INFO - Model Training started
+[2025-09-15 15:33:41,392] 95 root - INFO - Training model: Random Forest
+[2025-09-15 15:33:46,136] 95 root - INFO - Training model: Decision Tree
+[2025-09-15 15:33:46,265] 95 root - INFO - Training model: Gradient Boosting
+[2025-09-15 15:33:52,836] 95 root - INFO - Training model: Linear Regression
+[2025-09-15 15:33:52,862] 95 root - INFO - Training model: AdaBoost
+[2025-09-15 15:34:06,295] 42 root - INFO - Entered the save_object method of the main_utils class
+[2025-09-15 15:34:06,300] 46 root - INFO - Exited the save_object method of the main_utils class
+[2025-09-15 15:34:06,300] 42 root - INFO - Entered the save_object method of the main_utils class
+[2025-09-15 15:34:06,301] 46 root - INFO - Exited the save_object method of the main_utils class
+[2025-09-15 15:34:06,301] 127 root - INFO - Model trainer artifact :ModelTrainerArtifact(trained_model_file_path='Artifacts\\09_15_2025_15_33_35\\model_trainer\\training_model', train_metric_artifact={'r2': 1.0, 'mae': 0.0, 'mse': 0.0}, test_metric_artifact={'r2': 1.0, 'mae': 0.0, 'mse': 0.0})
+[2025-09-15 15:34:06,301] 39 root - INFO - Model Training artifact created

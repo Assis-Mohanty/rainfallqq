@@ -50,11 +50,11 @@ class NetworkDataExtract():
 
 
 if __name__=="__main__":
-    FILE_PATH="network_data\phisingData.csv"
-    DATABASE="networkQ"
-    Collection="networkDataQ"
-    networkobj=NetworkDataExtract()
-    records=networkobj.cv_to_json_convertor(file_path=FILE_PATH)
-    print(records)
-    no_of_records=networkobj.insert_data_mongodb(records,DATABASE,Collection)
-    print(no_of_records )
+    FILE_PATH = "network_data/phisingData.csv"  # Use forward slash for cross-platform compatibility
+    DATABASE = "rainfall"
+    Collection = "rainfall"
+    networkobj = NetworkDataExtract()
+    records = networkobj.cv_to_json_convertor(file_path=FILE_PATH)
+    print(records[:3])  # Print only first 3 records for brevity
+    no_of_records = networkobj.insert_data_mongodb(records, DATABASE, Collection)
+    print(f"Inserted {no_of_records} records into MongoDB.")

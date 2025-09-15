@@ -25,7 +25,7 @@ from sklearn.ensemble import (
 import mlflow
 
 import dagshub
-dagshub.init(repo_owner='Assis-Mohanty', repo_name='crossOrgin', mlflow=True)
+dagshub.init(repo_owner='Assis-Mohanty', repo_name='rainfallqq', mlflow=True)
 
 
 class ModelTrainer:

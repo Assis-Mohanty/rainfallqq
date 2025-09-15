@@ -24,7 +24,7 @@ MONDO_DB_URL=os.getenv("MONDO_DB_URL")
 
 
 class DataIngestion:
-    def __init__(self,data_ingestion_config:DataIngestionConfig):
+    def __init__(self,data_ingestion_config:DataIngestionConfig): 
         try:
             self.data_ingestion_config=data_ingestion_config
         except Exception as e:
@@ -37,15 +37,21 @@ class DataIngestion:
             self.mongo_client = pymongo.MongoClient(MONDO_DB_URL)
             collection = self.mongo_client[database_name][collection_name]
             df = pd.DataFrame(list(collection.find()))
-            
             logging.info(f"Read dataframe with shape: {df.shape}")
             if df.empty:
                 raise Exception(f"No data found in collection '{collection_name}' in database '{database_name}'.")
 
             if "_id" in df.columns:
                 df = df.drop(columns=["_id"])
-            
             df.replace({"na": np.nan}, inplace=True)
+
+            # Only keep columns defined in schema.yaml
+            schema_cols = ["Temperature", "Humidity", "Wind_Speed", "Cloud_Cover", "Pressure", "Rain"]
+            df = df[[col for col in schema_cols if col in df.columns]]
+            # Encode target column 'Rain' as 1/0
+            if "Rain" in df.columns:
+                df["Rain"] = df["Rain"].map({"rain": 1, "no rain": 0})
+            logging.info(f"Filtered DataFrame columns: {df.columns.tolist()}, shape: {df.shape}")
             return df
 
         except Exception as e:

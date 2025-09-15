@@ -14,18 +14,18 @@ from networksecurity.utils.ml_utils import model
 from networksecurity.utils.ml_utils.metric.classification_metric import get_classification_metrics
 from networksecurity.utils.ml_utils.model.estimator import NetworkModel
 
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import (
-    AdaBoostRegressor,
-    GradientBoostingRegressor,
-    RandomForestRegressor,
+    AdaBoostClassifier,
+    GradientBoostingClassifier,
+    RandomForestClassifier,
 )
 import mlflow
 
 import dagshub
-dagshub.init(repo_owner='Assis-Mohanty', repo_name='crossOrgin', mlflow=True)
+dagshub.init(repo_owner='Assis-Mohanty', repo_name='rainfallqq', mlflow=True)
 
 
 class ModelTrainer:
@@ -52,11 +52,11 @@ class ModelTrainer:
 
     def train_model(self,x_train,y_train,x_test,y_test):
         models={
-            "Random Forest":RandomForestRegressor(),
-            "Decision Tree":DecisionTreeRegressor(),
-            "Gradient Boosting":GradientBoostingRegressor(),
-            "Linear Regression":LinearRegression(),
-            "AdaBoost":AdaBoostRegressor(),
+            "Random Forest":RandomForestClassifier(),
+            "Decision Tree":DecisionTreeClassifier(),
+            "Gradient Boosting":GradientBoostingClassifier(),
+            "Logistic Regression":LogisticRegression(),
+            "AdaBoost":AdaBoostClassifier(),
         }
 
         params={
@@ -73,13 +73,13 @@ class ModelTrainer:
                 'subsample':[0.6,0.7,0.75,0.8,0.85,0.9],
                 'n_estimators' :[8,16,32,64,128,256]
             },
-            "Linear Regression":{},
+            "Logistic Regression":{},
             "AdaBoost":{
                 'learning_rate':[0.1,0.01,0.5,0.001],
                 'n_estimators' :[8,16,32,64,128,256]
             }
         }
-    model_report:dict=evaluate_models(x_train=x_train,y_train=y_train,x_test=x_test,y_test=y_test,models=models,params=params)
+        model_report:dict=evaluate_models(x_train=x_train,y_train=y_train,x_test=x_test,y_test=y_test,models=models,params=params)
         best_model_score=max(sorted(model_report.values()))
         best_model_name=list(model_report.keys())[list(model_report.values()).index(best_model_score)]
         best_model=models[best_model_name]
@@ -87,22 +87,26 @@ class ModelTrainer:
         y_train_pred=best_model.predict(x_train)
         y_test_pred=best_model.predict(x_test)
 
-        # Regression metrics
-        train_r2 = r2_score(y_train, y_train_pred)
-        train_mae = mean_absolute_error(y_train, y_train_pred)
-        train_mse = mean_squared_error(y_train, y_train_pred)
-        test_r2 = r2_score(y_test, y_test_pred)
-        test_mae = mean_absolute_error(y_test, y_test_pred)
-        test_mse = mean_squared_error(y_test, y_test_pred)
+        # Classification metrics
+        train_acc = accuracy_score(y_train, y_train_pred)
+        train_prec = precision_score(y_train, y_train_pred)
+        train_rec = recall_score(y_train, y_train_pred)
+        train_f1 = f1_score(y_train, y_train_pred)
+        test_acc = accuracy_score(y_test, y_test_pred)
+        test_prec = precision_score(y_test, y_test_pred)
+        test_rec = recall_score(y_test, y_test_pred)
+        test_f1 = f1_score(y_test, y_test_pred)
 
         # Log metrics to MLflow
         with mlflow.start_run():
-            mlflow.log_metric("train_r2", train_r2)
-            mlflow.log_metric("train_mae", train_mae)
-            mlflow.log_metric("train_mse", train_mse)
-            mlflow.log_metric("test_r2", test_r2)
-            mlflow.log_metric("test_mae", test_mae)
-            mlflow.log_metric("test_mse", test_mse)
+            mlflow.log_metric("train_accuracy", train_acc)
+            mlflow.log_metric("train_precision", train_prec)
+            mlflow.log_metric("train_recall", train_rec)
+            mlflow.log_metric("train_f1", train_f1)
+            mlflow.log_metric("test_accuracy", test_acc)
+            mlflow.log_metric("test_precision", test_prec)
+            mlflow.log_metric("test_recall", test_rec)
+            mlflow.log_metric("test_f1", test_f1)
             mlflow.sklearn.log_model(best_model,"model")
 
         preprocssor=load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
@@ -113,11 +117,11 @@ class ModelTrainer:
         save_object(self.model_trainer_config.trained_model_file_path,obj=Network_Model)
         save_object("final_model/model.pkl",best_model)
 
-        # You may want to create a regression metric artifact, but for now, return the scores
+        # Return classification metrics
         model_trainer_artifact=ModelTrainerArtifact(
             trained_model_file_path=self.model_trainer_config.trained_model_file_path,
-            train_metric_artifact={"r2": train_r2, "mae": train_mae, "mse": train_mse},
-            test_metric_artifact={"r2": test_r2, "mae": test_mae, "mse": test_mse}
+            train_metric_artifact={"accuracy": train_acc, "precision": train_prec, "recall": train_rec, "f1": train_f1},
+            test_metric_artifact={"accuracy": test_acc, "precision": test_prec, "recall": test_rec, "f1": test_f1}
         )
         logging.info(f"Model trainer artifact :{model_trainer_artifact}")
         return model_trainer_artifact

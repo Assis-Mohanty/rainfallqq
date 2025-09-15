@@ -5,7 +5,7 @@ import pandas as pd
 
 SCHEMA_FILE_PATH=os.path.join("data_schema","schema.yaml")
 
-TARGET_COLUMN="Yield"
+TARGET_COLUMN="Rain"
 PIPELINE_NAME:str="NetworkSecurity"
 ARTIFACT_DIR:str="Artifacts"
 FILE_NAME:str="phisingData.csv"
@@ -17,8 +17,8 @@ SAVED_MODEL_DIR:str="saved_model"
 MODEL_FILE_NAME:str="model.pkl"
 
  
-DATA_INGESTION_COLLECTION_NAME: str="networkDataQ"
-DATA_INGESTION_DATABASE_NAME: str="networkQ"
+DATA_INGESTION_COLLECTION_NAME: str="rainfall"
+DATA_INGESTION_DATABASE_NAME: str="rainfall"
 DATA_INGESTION_DIR_NAME : str="data_ingestion"
 DATA_INGESTION_FEATURE_STORE_DIR: str="feature_store"
 DATA_INGESTION_INGESTED_DIR: str="ingested"

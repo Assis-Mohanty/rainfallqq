@@ -1,0 +1,6 @@
+[2025-09-15 18:14:29,654] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-09-15 18:14:29,661] 107 dagshub - INFO - Accessing as Assis-Mohanty
+[2025-09-15 18:14:30,570] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Assis-Mohanty/rainfallqq "HTTP/1.1 200 OK"
+[2025-09-15 18:14:31,491] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-09-15 18:14:31,493] 107 dagshub - INFO - Initialized MLflow to track repo "Assis-Mohanty/rainfallqq"
+[2025-09-15 18:14:31,493] 107 dagshub - INFO - Repository Assis-Mohanty/rainfallqq initialized!

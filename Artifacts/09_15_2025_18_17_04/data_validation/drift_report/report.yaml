@@ -1,0 +1,18 @@
+Cloud_Cover:
+  drift_status: true
+  pvalue: 0.02586274635744255
+Humidity:
+  drift_status: false
+  pvalue: 0.45165698770484414
+Pressure:
+  drift_status: false
+  pvalue: 0.8387378048452864
+Rain:
+  drift_status: false
+  pvalue: 1.0
+Temperature:
+  drift_status: false
+  pvalue: 0.061701502391026224
+Wind_Speed:
+  drift_status: false
+  pvalue: 0.5516268624110984
